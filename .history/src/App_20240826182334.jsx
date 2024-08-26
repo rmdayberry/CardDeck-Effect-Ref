@@ -2,11 +2,11 @@ import { useState } from "react";
 import DeckOfCards from "./DeckOfCards";
 
 function App() {
-  return (
+  return(
     <div>
-      <DeckOfCards />
+      <
     </div>
-  );
+  )
 }
 
 export default App;

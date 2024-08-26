@@ -18,18 +18,16 @@ const DeckofCards = () => {
   }, []);
 
   const drawCard = async () => {
-    if (remaining === 0) {
+    if(remaining === 0){
       alert("Error: No cards remaining!");
       return;
     }
 
-    try {
-      const response = await axios.get(
-        `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
-      );
+    try{
+      const response = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
       setCards([...cards, ...response.data.cards]);
       setRemaining(response.data.remaining);
-    } catch (error) {
+    } catch(error){
       console.error("Error Drawing a card:", error);
     }
   };
@@ -37,33 +35,18 @@ const DeckofCards = () => {
   const shuffleDeck = async () => {
     setIsShuffling(true);
     try {
-      await axios.get(`https://deckofcardsapi.com/api/deck/$${deckId}/shuffle`);
-      setCards([]);
-      setRemaining(52);
-    } catch (error) {
-      console.error("Error shuffling the deck:", error);
-    } finally {
-      setIsShuffling(false);
+      await
     }
-  };
+  }
 
-  return (
+  return(
     <div>
-      <button onClick={drawCard} disabled={isShuffling}>
-        Draw a card
-      </button>
-      <button onClick={shuffleDeck} disabled={setIsShuffling}>
-        Shuffle
-      </button>
-      <div>
-        {cards.map((card, index) => (
-          <img
-            key={index}
-            src={card.image}
-            alt={`${card.value} of ${card.suit}`}
-          />
-        ))}
-      </div>
+      <button onClick={drawCard}>Draw a card</button>
+  <div>
+    {cards.map((card, index)=> (
+      <img key={index} src={card.image} alt={card.value + " of " card.suit} />
+  ))}
+  </div>
     </div>
   );
 };

@@ -53,7 +53,7 @@ const DeckofCards = () => {
 
   const startDrawing = () => {
     setIsDrawing(true);
-    drawInterval.current = setInterval(drawCard, 1000);
+    setInterval(drawCard, 1000);
   };
   const stopDrawing = () => {
     setIsDrawing(false);

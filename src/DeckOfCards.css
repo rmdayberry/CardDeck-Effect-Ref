@@ -1,0 +1,31 @@
+.deck-container {
+  text-align: center;
+  margin: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cards-container {
+  position: relative;
+  height: 200px;
+  margin-top: 20px;
+}
+.cards-container img {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cards-container img:nth-child(n + 2) {
+  top: calc(50px * var(--index));
+  z-index: var(--index);
+}

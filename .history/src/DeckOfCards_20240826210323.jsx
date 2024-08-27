@@ -6,7 +6,6 @@ const DeckofCards = () => {
   const [deckId, setDeckId] = useState(null);
   const [cards, setCards] = useState([]);
   const [remaining, setRemaining] = useState(52);
-  const [isDrawing, setIsDrawing] = useState(false);
   const [isShuffling, setIsShuffling] = useState(false);
   const drawInterval = useRef(null);
 
@@ -53,7 +52,7 @@ const DeckofCards = () => {
 
   const startDrawing = () => {
     setIsDrawing(true);
-    drawInterval.current = setInterval(drawCard, 1000);
+    setInterval(drawCard, 1000);
   };
   const stopDrawing = () => {
     setIsDrawing(false);
@@ -62,9 +61,8 @@ const DeckofCards = () => {
 
   const shuffleDeck = async () => {
     setIsShuffling(true);
-    stopDrawing();
     try {
-      await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle`);
+      await axios.get(`https://deckofcardsapi.com/api/deck/$${deckId}/shuffle`);
       setCards([]);
       setRemaining(52);
     } catch (error) {
